@@ -1,6 +1,6 @@
 <!doctype html>
 {% load  static  %}
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,13 +10,12 @@
     <title>Login</title>
   </head>
 
-  <body class="text-center">
+<body class="text-center">
     
 <main class="form-signin">
   <form method="post" >
     {% csrf_token %}
-    <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
-    <h1 class="h3 mb-3 fw-normal">login</h1>
+    <img src = "{% static "img/LOGO.svg" %}" alt="LOGO"/>
 
     <div class="form-floating">
       <input type="text" name="username" class="form-control" id="floatingInput" placeholder="name">
