@@ -1,0 +1,8 @@
+{% for tasks in tasks %}
+<li>
+<a href="{% url 'item' tasks.id  %}">{{tasks.name}} - {{tasks.date}}</a>-
+<a href="{% url 'taskdelete' tasks.id %}">deletar</a>-
+
+
+</li>
+{% endfor %}
