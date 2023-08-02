@@ -1,0 +1,8 @@
+<form method="post">{% csrf_token %}
+    <label>username</label>
+<input type="text" name="username">
+<label>password</label>
+<input type="text" name="password">
+<input type="submit" value="entrar"><br>
+<a href={% url 'logout' %}>vaza daqui vadia</a>
+</form>
