@@ -1,0 +1,5 @@
+{% for task in tasks %}
+<li>
+<a href="{% url 'item' task.id  %}">{{task.name}} - {{task.date}}</a>
+</li>
+{% endfor %}
