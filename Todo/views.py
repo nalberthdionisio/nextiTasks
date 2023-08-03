@@ -25,4 +25,5 @@ def taskdelete(request,id):
     task.delete()
     return redirect("/main")
 
-    
+def taskedit(request,id):
+    pass    
