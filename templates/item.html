@@ -2,7 +2,11 @@
 
 
 {% block item %}
-    {{task.name}}
-    {{task.description}}
+<form method='post'> {% csrf_token %}
+    {{form}}
+    {% comment %} {{task.name}}
+    {{task.description}} {% endcomment %}
+    <input type="submit" value="salvar">
+</form>
 {% endblock item %}
 

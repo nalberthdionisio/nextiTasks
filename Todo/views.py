@@ -10,15 +10,21 @@ def item(request, id):
     tasks = Task.objects.all()
 
     task = Task.objects.get(id=id)
-    # return HttpResponse(task.name)
-    print(task)
-    return render(request, 'item.html',{'task':task, 'tasks':tasks})
+    form = TaskForm(instance=task)
+
+    if request.method == 'POST':
+        form = TaskForm(request.POST, instance=task)
+        if form.is_valid():
+            form.save()
+
+    return render(request, 'item.html',{'task':task, 'tasks':tasks, 'form':form})
 
 def formtasks(request):
     if request.method == 'POST':
         form = TaskForm(request.POST)
         if form.is_valid():
             form.save()
+            return redirect("/main")
     else:
         form = TaskForm()
     return render(request, 'formtasks.html', {'form': form})
@@ -29,4 +35,4 @@ def taskdelete(request,id):
     return redirect("/main")
 
 def taskedit(request,id):
-    pass    
+    pass
