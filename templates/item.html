@@ -1,3 +1,8 @@
-{% for item in task %}
-{{item.name}}
-{% endfor %}
+{% extends 'main.html' %}
+
+
+{% block item %}
+    {{task.name}}
+    {{task.description}}
+{% endblock item %}
+

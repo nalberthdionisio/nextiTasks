@@ -6,10 +6,13 @@ def main(request):
     tasks = Task.objects.all()
     return render(request, 'main.html',{'tasks':tasks})
 
-def item(request,id):
+def item(request, id):
+    tasks = Task.objects.all()
+
     task = Task.objects.get(id=id)
-    return HttpResponse(task.name)
-    # return render(request, 'item.html',{'task':task})
+    # return HttpResponse(task.name)
+    print(task)
+    return render(request, 'item.html',{'task':task, 'tasks':tasks})
 
 def formtasks(request):
     if request.method == 'POST':
