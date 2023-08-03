@@ -1,0 +1,117 @@
+/* Confiiguração da tela, isso faz com que retire margins e paddins e etc indesejados na criação da tela */
+*{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+} 
+
+/* Tamanho da logo no menu superior */
+img{
+    padding: 5px;
+    width: 150px ;
+    margin-left: 90px;
+} 
+
+/* configuração padrão do menu superior */
+.navbar{
+    border-bottom: solid  1px;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 20px;
+}
+
+.navbar .bi{
+    color: #000;
+}
+
+.navbar.bi:hover{
+    color: #0078AC;
+}
+
+
+/* configurações do menu lateral */
+.sidebar{
+    max-height: 86vh; 
+    overflow-y: auto; 
+    border-right: solid 1px;
+    position: relative;
+}
+
+.sidebar .title{
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.sidebar .itens{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: solid 1px #000000;
+    border-radius: 5px;
+    padding: 10px;
+    width: 280px;
+    height: 60px;
+    margin-top: 15px;
+}
+
+
+/* estilização dos titulo das tarefas e do icone de exclusão de itens */
+
+.titleTask{
+    font-size: 25px;
+    color:#000000;
+    text-decoration: none;
+}
+
+.titleTask:hover{
+    color: #0078AC;
+}
+
+.trash{
+    color: #000000;
+    text-decoration: none;
+}
+
+.trash:hover{
+    color: #ff0000;
+}
+
+
+/* Estilização do botão de adicionar novas tarefas */
+
+button{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 30px !important;
+    border-radius: 5px;
+    padding: 10px;
+    width: 200px;
+    height: 60px;
+    border: solid 1px #0078AC;
+    color: #0078AC;
+    background-color: #fff;
+    position: fixed; 
+    bottom: -10px;
+    right: 2%;
+    z-index: 9999;
+}
+
+button:hover{
+    background-color: #0078AC;
+    color: #fff;
+}
+
+
+/* Tamanho perrsonalizados dos icones */
+
+.icon-lg{
+    font-size: 22px;
+}
+
+.icon-sm{
+    font-size: 30px;
+}
