@@ -14,6 +14,7 @@ def item(request, id):
 
     if request.method == 'POST':
         form = TaskForm(request.POST, instance=task)
+        print(form.errors)
         if form.is_valid():
             form.save()
 
