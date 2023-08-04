@@ -7,6 +7,7 @@ from .forms import *
 def main(request):
     tasks = Task.objects.all()
     return render(request, 'main.html',{'tasks':tasks})
+
 @login_required(login_url='/login')
 def item(request, id):
     tasks = Task.objects.all()
