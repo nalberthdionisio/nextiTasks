@@ -4,7 +4,7 @@
 
 <div class="container">
         <div class="formulario">
-            <form method="post">{% csrf_token %}
+            <form method="post" action="{% url 'formtasks' %}">{% csrf_token %}
                 {{form}}
                 <input type='submit' value="salvar ">
             </form>
