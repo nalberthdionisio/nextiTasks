@@ -3,24 +3,43 @@ href="{% static "css/sidebar.css" %}"> {%endblock css%}{% block body %}
 
 
 <nav class="navbar navbar-light bg-light" style="border-bottom: solid 0.5px #ccc">
-  <a class="navbar-brand" href="#">
-    <img src="{% static "img/LOGO.svg" %}" width="96" class="d-inline-block align-top ms-3" alt="">
-  </a>
+  <div class="w-100 d-flex justify-content-between">
+    <div>
+      <a class="navbar-brand" href="#">
+        <img src="{% static "img/LOGO.svg" %}" width="96" class="d-inline-block align-top ms-3" alt="">
+      </a>
+    </div>
+    <div class="ms-auto">
+      <div class="dropdown">
+        <a class="me-xl-5" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="bi bi-box-arrow-in-right" style="font-size: 25px; color: #000;"></i>
+        </a>
+      
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+          <li><a href="{% url 'logout'%}" class="dropdown-item" href="#">Sair</a></li>
+        </ul>
+      </div>
+      
+    </div>
+  </div>
 </nav>
 
-
-  <main>
-    <div
-      class="d-flex flex-column align-items-stretch flex-shrink-0 bg-light"
-      style="width: 300px; height:89vh; border-right: solid 0.5px #ccc">
-      <a
-        href="{% url 'formtasks'%}"
-        class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom"
-      >
-        <span class="fs-5 fw-semibold">
-          <button type="button" >Adicionar</button>
-        </span>
-      </a>
+<main>
+  <div
+    class="d-flex flex-column align-items-stretch flex-shrink-0 bg-light"
+    style="width: 300px; height:91vh; border-right: solid 0.5px #ccc;">
+    <a
+      href="{% url 'formtasks'%}"
+      class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom"
+    >
+      <span class="fs-5 fw-semibold">
+        <button type="button">
+          <i class="bi bi-plus"></i>
+          Tarefa</button>
+      </span>
+    </a>
+    <div style="overflow-y: auto;">
+      
       {% for tasks in tasks %}
       <div class="list-group list-group-flush border-bottom scrollarea">
         <a
@@ -30,7 +49,7 @@ href="{% static "css/sidebar.css" %}"> {%endblock css%}{% block body %}
         >
           <div class="d-flex w-100 align-items-center justify-content-between">
             <strong class="mb-1">{{tasks.name}}</strong>
-            <small>{{tasks.date}}</small>
+            <small>{{tasks.date | date:"Y-m-d" }}</small>
           </div>
           <div class="col-10 mb-1 small">
             {{tasks.description}}
@@ -39,31 +58,47 @@ href="{% static "css/sidebar.css" %}"> {%endblock css%}{% block body %}
       </div>
       {% endfor %}
     </div>
-    <div style="width: auto">{% block item %}{% endblock item %}</div> 
-    
-  <form  method="post" class="w-auto">
-    {% csrf_token %}
-    <div class="mb-3">
-      <label  class="form-label">Tarefa</label>
-      <input type="text" class="form-control" name="name" value="{{task.name}}">
-    </div>
-    <div class="mb-3">
-      <label  class="form-label">Descrição</label>
-      <textarea name="description" cols="40" rows="10" maxlength="100" required="" > {{task.description}}</textarea>
-    </div>
-    <div class="mb-3">
-      <label  class="form-label">data</label>
-      <input type="date" name="date" class="form-control" value="{{task.date| date:"Y-m-d" }}">  
-    </div>
-    <div class="mb-3">
-      <label >Done:</label>
-      <input type="checkbox" name="done" {% if  task.done %}checked {% endif %}>
-    </div>
+  </div>
 
+  <div style="width: 400vh;">{% block item %}{% endblock item %} 
+  
+    <div class="container d-flex justify-content-center align-items-center">
+      <div class="flex-column">
+        <form method="post" class="w-auto">
+          <h3 class="d-flex justify-content-center mt-xl-5 mb-xl-5">Tarefa</h3>
+          {% csrf_token %}
+          <div style="width: 100%;">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mb-3 ">
+                  <label class="form-label">Nome</label>
+                  <input type="text" class="form-control me-xl-5 w-100" name="name" value="{{task.name}}">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3 me-5">
+                  <label class="form-label">Data</label>
+                  <input type="date" name="date" class="form-control w-50" value="{{task.date| date:"Y-m-d" }}">  
+                </div>
+              </div>
+            </div>
+            <div class="mb-3 ">
+              <label class="form-label">Descrição</label>
+              <textarea name="description" cols="10" rows="5" maxlength="200" required="" class="form-control" style="width: 110vh;">{{task.description}}</textarea>
+            </div>
+            <div class="mb-3 d-flex justify-content-start align-items-center">
+              <label>Done: </label>
+              <input type="checkbox" name="done" {% if task.done %}checked{% endif %}>
+            </div>
+          </div>
+      
+          <div class="d-flex justify-content-center">
+            <button class="button" type="submit">Adicionar</button>
+          </div>
+        </form>
+      </div>
+    </div>
     
-    <button class="button" type="submit">Adicionar</button>
-</form>
-
-  </main>
-  {% endblock body %}
-</div>
+  </div>
+</main>
+{% endblock body %}
