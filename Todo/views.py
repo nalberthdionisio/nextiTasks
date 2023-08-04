@@ -21,14 +21,17 @@ def item(request, id):
     return render(request, 'item.html',{'task':task, 'tasks':tasks, 'form':form})
 
 def formtasks(request):
+    tasks = Task.objects.all()
     if request.method == 'POST':
         form = TaskForm(request.POST)
+        # form.user = request.user
+        print(form.name)
         if form.is_valid():
             form.save()
             return redirect("/main")
     else:
         form = TaskForm()
-    return render(request, 'formtasks.html', {'form': form})
+    return render(request, 'formtasks.html', {'form': form, 'tasks':tasks})
 
 def taskdelete(request,id):
     task = get_object_or_404(Task, id=id)
@@ -36,4 +39,6 @@ def taskdelete(request,id):
     return redirect("/main")
 
 def taskedit(request,id):
-    pass
+    task = get_object_or_404(Task, id=id)
+    task.delete()
+    return redirect("/main")
