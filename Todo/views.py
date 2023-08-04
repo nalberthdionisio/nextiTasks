@@ -24,11 +24,17 @@ def item(request, id):
 def formtasks(request):
     tasks = Task.objects.all()
     if request.method == 'POST':
-        form = TaskForm(request.POST)
-        # form.user = request.user
+
+
+        post_data = request.POST.copy()
+        post_data.update({'user': request.user})
+        form = TaskForm(post_data)
+        
+
         if form.is_valid():
             form.save()
             return redirect("/main")
+            # return redirect("/main")
     else:
         form = TaskForm()
     return render(request, 'formtasks.html', {'form': form, 'tasks':tasks})
