@@ -1,6 +1,7 @@
 body {
     min-height: 100vh;
     min-height: -webkit-fill-available;
+    overflow: hidden;
   }
   
   html {
@@ -88,17 +89,36 @@ body {
   .fw-semibold { font-weight: 600; }
   .lh-tight { line-height: 1.25; }
   
-  button{
-    font-weight: bold !important;
+  .button-slv{
+    font-weight: bold;
     background-color: #fff;
     width: 250px ;
     height: 40px ;
-    border-radius: 10px !important;
+    border-radius: 10px ;
     border: solid 1px #0078AC;
-    color: #0078AC !important;
+    color: #0078AC ;
   }
   
-  button:hover{
+  .button-slv:hover{
     background-color: #0078AC !important;
-    color: #fff !important;
+    color: #fff ;
+  }
+  .button-dlt{
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    background-color: #fff;
+    width: 250px ;
+    height: 40px ;
+    border-radius: 10px;
+    border: solid 1px #d83c3c;
+    color: #d83c3c;
+    margin-left: 80px;
+  }
+  
+  .button-dlt:hover{
+    background-color: #d83c3c ;
+    color: #fff ;
   }
