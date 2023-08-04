@@ -122,3 +122,7 @@ body {
     background-color: #d83c3c ;
     color: #fff ;
   }
+
+  .icon-sm{
+    font-size: 25px;
+}

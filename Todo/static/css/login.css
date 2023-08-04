@@ -37,7 +37,7 @@ img{
 .form-floating{
   margin-top: 15px;
   border: none;
-  border-color: 5px 5px 5px 5px rgba(36, 36, 36, 0.5);
+  border-color: 5px 5px 5px 5px #24242480;
   border-radius: 10px;
   
 }

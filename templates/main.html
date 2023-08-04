@@ -33,27 +33,27 @@ href="{% static "css/sidebar.css" %}"> {%endblock css%}{% block body %}
       class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom"
     >
       <span class="fs-5 fw-semibold">
-        <button class="button-slv" type="button">Tarefa</button>
+        <button class="button-slv" type="button">Adicionar</button>
       </span>
     </a>
-    <div style="overflow-y: auto;">
+    <div style="overflow-y: auto; ">
       
       {% for tasks in tasks %}
-      <div class="list-group list-group-flush border-bottom scrollarea">
+      <div class=" flex-row  list-group list-group-flush border-bottom scrollarea">
         <a
           href="{% url 'item' tasks.id  %}"
           class="list-group-item list-group-item-action py-3 lh-tight bg-light"
           aria-current="true"
         >
         <div class="d-flex w-100 align-items-center justify-content-between">
-          <strong class="mb-1">{{tasks.name}}</strong>
-          <a href="{% url 'taskdelete' tasks.id %}"><i class="bi bi-trash"></i></a>
+          <strong class="mb-1">{% if tasks.done %}<del>{{tasks.name}}</del>{% else %}{{tasks.name}} {% endif %}</strong>
           <small>{{tasks.date | date:"Y-m-d" }}</small>
-          </div>
-          <div class="col-10 mb-1 small">
-            {{tasks.description}}
-          </div>
-        </a>
+        </div>
+        <div class="col-10 mb-1 small">
+          {% if tasks.done %}<del>{{tasks.description}}</del>{% else %}{{tasks.description}} {% endif %}
+        </div>
+        <a class="d-flex align-items-center icon-sm" style="color:#d83c3c; border-left: 1px solid #24242480;" href="{% url 'taskdelete' tasks.id %}"><i class="bi bi-trash"></i></a>
+      </a>
       </div>
       {% endfor %}
     </div>
