@@ -1,12 +1,11 @@
-{% extends 'main.html' %}
-
-
+{% extends 'main.html' %}  {# Estendendo o template 'main.html' para usar seu layout e estilos #}
 
 <div class="container">
-        <div class="formulario">
-            <form method="post" action="{% url 'formtasks' %}">{% csrf_token %}
-                {{form}}
-                <input type='submit' value="salvar ">
+    <form method="post" action="{% url 'formtasks' %}">
+        {% csrf_token %}  
+        <div class="formulario"> {# Criando um formulário com método POST e definindo a URL de ação #}
+                {{form}}  {# Renderizando o formulário usando o contexto fornecido #}
+                <input type='submit' value="salvar ">  {# Botão de envio do formulário #}
             </form>
         </div>
 </div>

@@ -1,24 +1,28 @@
-{% extends "base.html" %}{%block css%}{% load  static  %}
-<link rel="stylesheet"  href="{% static "css/login.css" %}">
-{%endblock css%}{% block body %}
+{% extends "base.html" %} {# Estendendo o template "base.html" que tem todos os links de css e do bootstrap #}
+{% block css %} {# é uma tag de template do Django que permite criar áreas reutilizáveis e substituíveis em um template estendido.#}
+{% load static %} {# é uma tag que carrega o sistema de gerenciamento de arquivos estáticos do Django #}
+<link rel="stylesheet"  href="{% static "css/login.css" %}"> {# Incluindo o arquivo CSS de estilos específicos #}
+{% endblock css %}
+{% block body %}  {# Iniciando o bloco do corpo da página #}
 
-<div class="text-center">
-    <main class="form-signin">
-      <form method="post" >
-        {% csrf_token %}
-        <img src = "{% static "img/LOGO.svg" %}" alt="LOGO"/>
+<div class="text-center">  {# Criando uma div com classe "text-center" para centralizar o conteúdo #}
+    <main class="form-signin">  {# Criando uma seção principal com classe "form-signin" para o formulário de login #}
+      <form method="post" >  {# Iniciando o formulário com método POST #}
+        {% csrf_token %}  {# Inserindo um token CSRF para proteção contra ataques CSRF #}
+        <img src = "{% static "img/LOGO.svg" %}" alt="LOGO"/>  {# Inserindo uma imagem do logo usando um caminho estático #}
 
-        <div class="form-floating">
-          <input type="text" name="username" class="form-control" id="floatingInput" placeholder="Nome">
-          <label for="floatingInput">Nome</label>
+        <div class="form-floating">  {# Criando uma div com classe "form-floating" para campos de entrada flutuantes #}
+          <input type="text" name="username" class="form-control" id="floatingInput" placeholder="Nome">  {# Campo de entrada de texto para o nome de usuário #}
+          <label for="floatingInput">Nome</label>  {# Rótulo associado ao campo de entrada #}
         </div>
-        <div class="form-floating">
-          <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Senha">
-          <label for="floatingPassword">Senha</label>
+        <div class="form-floating">  {# Outra div para outro campo de entrada flutuante #}
+          <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Senha">  {# Campo de entrada de senha #}
+          <label for="floatingPassword">Senha</label>  {# Rótulo associado ao campo de entrada de senha #}
         </div>
 
-        <button type="submit">Entrar</button>
+        <button type="submit">Entrar</button>  {# Botão de envio do formulário #}
       </form>
     </main>
   </div>
-{% endblock body%}
+
+{% endblock body%}  {# Finalizando o bloco do corpo da página #}
