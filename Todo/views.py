@@ -12,7 +12,7 @@ def main(request):
         form = TaskForm(post_data)
         if form.is_valid():
             form.save()
-            return redirect("/main")
+            return redirect("/")
             # return redirect("/main")
     else:
         form = TaskForm()
@@ -44,7 +44,7 @@ def formtasks(request):
         form = TaskForm(post_data)
         if form.is_valid():
             form.save()
-            return redirect("/main")
+            return redirect("/")
             # return redirect("/main")
     else:
         form = TaskForm()
@@ -54,10 +54,10 @@ def formtasks(request):
 def taskdelete(request,id):
     task = get_object_or_404(Task, id=id)
     task.delete()
-    return redirect("/main")
+    return redirect("/")
 
 @login_required(login_url='/login')
 def taskedit(request,id):
     task = get_object_or_404(Task, id=id)
     task.delete()
-    return redirect("/main")
+    return redirect("/")

@@ -68,7 +68,7 @@
               <div class="col-md-6">
                 <div class="mb-3 ">
                   <label class="form-label">Nome</label>
-                  <input type="text" class="form-control me-xl-5 w-100" name="name" value="{{task.name}}">
+                  <input type="text" class="form-control me-xl-5 w-100" name="name" value="{{form.name.value|default:""}}">
                 </div>
               </div>
               <div class="col-md-6">
@@ -80,6 +80,7 @@
             </div>
             <div class="mb-3 ">
               <label class="form-label">Descrição</label>
+
               <textarea name="description" cols="10" rows="5" maxlength="200" required="" class="form-control" style="width: 110vh; max-height: 200px; overflow-y: auto;">{{task.description}}</textarea>  {# Campo de entrada para descrição da tarefa #}
             </div>
             <div class="mb-3 d-flex justify-content-start align-items-center">
